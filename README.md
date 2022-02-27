@@ -1,9 +1,9 @@
 # React Drag and Drop Sample Application
 
-<img src="./react-dnd.gif"/>  
+A sample application to demonstrate drag and drop functionality using React as the frontend and Flask as the backend, all packaged into a Kubernetes Service.  
 <br>
 
-A sample application to demonstrate drag and drop functionality using React as the frontend and Flask as the backend, all packaged into a Kubernetes Service.  
+<img src="./react-dnd.gif"/>  
 <br>
 
 The application demonstrates a part of an Influencer Management System. In this scenario we have a group of videos that can be assigned to different Influencers. Each group of videos is organized into campaigns.
