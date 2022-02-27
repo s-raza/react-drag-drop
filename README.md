@@ -1,7 +1,7 @@
 # React Drag and Drop Sample Application
 
 <img src="./react-dnd.gif"/>  
-<br><br>
+<br>
 
 A sample application to demonstrate drag and drop functionality using React as the frontend and Flask as the backend, all packaged into a Kubernetes Service.  
 <br>
@@ -66,7 +66,7 @@ content-dist/
 
 The above folder structure is used to render the draggables when the React frontend is first loaded. The top level folders i.e. Campaign_1, Campaign_2 and Campaign_3 become the draggables and can be assigned to Infleuncers by dragging and dropping.
 
-## Usage
+## Setup
 
 All the following instructions have been tested with the following pre-requisites
 
