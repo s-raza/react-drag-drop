@@ -1,0 +1,44 @@
+{% extends "appbuilder/base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                {% set ns = namespace(first=true) %}
+                {% for campaign,_ in folder_data.items() %}
+                    {% if ns.first %}
+                        <li role="presentation" class="active">
+                        {% set ns.first = false %}
+                    {% else %}
+                        <li role="presentation">
+                    {% endif %}
+                        <a href="#{{ campaign }} " aria-controls="{{ campaign }}" role="tab" data-toggle="tab">{{ campaign }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                {% set ns = namespace(first=true) %}
+                {% for campaign, vidtypes in folder_data.items() %}
+                    {% if ns.first %}
+                    <div role="tabpanel" class="tab-pane fade in active" id="{{ campaign }}">
+                        {% set ns.first = false %}
+                    {% else %}
+                    <div role="tabpanel" class="tab-pane fade" id="{{ campaign }}">
+                    {% endif %}
+                    {% for vidtype, vids in vidtypes.items() %}
+                        [{{ "/".join([base_path, campaign, vidtype]) }}]:</br>
+                        {% for vid in vids %} 
+                            {{ vid }}</br>
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

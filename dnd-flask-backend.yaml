@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+# Name of the service that can be accesible by name internally
+  name: dnd-flask-backend 
+spec:
+  selector:
+    app: dnd-flask-backend
+  ports:
+  # Default port on which the Flask app runs
+  - port: 5000 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnd-flask-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dnd-flask-backend
+  template:
+    metadata:
+      labels:
+        app: dnd-flask-backend
+    spec:
+      containers:
+      - name: dnd-flask-backend
+        image: dnd-flask-backend
+        resources:
+          limits:
+            memory: "500M"
+            cpu: "1000m"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000

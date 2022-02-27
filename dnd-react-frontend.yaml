@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dnd-react-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: dnd-react-frontend
+  ports:
+  - port: 3000
+    targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnd-react-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dnd-react-frontend
+  template:
+    metadata:
+      labels:
+        app: dnd-react-frontend
+    spec:
+      containers:
+      - name: dnd-react-frontend
+        image: dnd-react-frontend
+        resources:
+          limits:
+            memory: "500M"
+            cpu: "1000m"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
